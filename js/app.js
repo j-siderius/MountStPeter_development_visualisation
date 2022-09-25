@@ -58,7 +58,7 @@ let kuyperMaterial, ahn1Material, ahn2Material, ahn3Material, ahn4Material = new
 
 // loading all models
 Promise.all([
-    gltfLoader.loadAsync('meshes/kuyper_1870.gltf'),
+    gltfLoader.loadAsync('meshes/kuyper_1870_2.gltf'),
     gltfLoader.loadAsync('meshes/ahn1_2005.gltf'),
     gltfLoader.loadAsync('meshes/ahn2_2012.gltf'),
     gltfLoader.loadAsync('meshes/ahn3_2018.gltf'),
@@ -352,7 +352,7 @@ function animate() {
     // if (orbit) controls.update();
 
     if (orbit) {
-        angle += 0.2;
+        angle += 0.125;
         // angle++;
         orbitFeature(angle, orbitTarget, orbitDistance, orbitHeight);
     }
