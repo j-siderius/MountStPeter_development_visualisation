@@ -159,14 +159,15 @@ div#section {
 
 div#mapInfo {
     position: fixed;
-    top: 98vh;
-    left: 1vh;
+    top: 96vh;
+    left: 2vh;
     color: white;
     font-family: 'Raleway', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 20px;
     font-weight: 400;
     font-style: normal;
+    text-shadow: #000000 1px 0 10px;
 }
 
 canvas {
