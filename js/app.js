@@ -228,7 +228,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: artist' impression";
+        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: Jannick Siderius - impression";
 
     } else if (scrollPercentage >= 20 && scrollPercentage < 32) {
         // top-down view + overlay tunnel map (kuyper)
@@ -243,7 +243,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = true;
 
-        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: artist' impression, Map data: Ir. DC van Schaïk";
+        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: Jannick Siderius - impression, Map data: Ir. DC van Schaïk";
 
     } else if (scrollPercentage >= 32 && scrollPercentage < 44) {
         // zoom to ENCI building (ahn1)
