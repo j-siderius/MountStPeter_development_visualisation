@@ -38,7 +38,7 @@ pointLight.shadow.bias = -0.010;
 scene.add(pointLight);
 
 // orbiting controls
-// const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 // controls.autoRotate = true;
 
 // find page elements
@@ -49,6 +49,8 @@ let sectionDiv = document.querySelector('#section');
 let loadingDots = document.querySelector('#loadingDots');
 let dotInterval = setInterval(loadingDotsCount, 750);
 let mapInfoDiv = document.querySelector('#mapInfo');
+let yearLabel = document.querySelector('#yearSliderLabel');
+let yearSlider = document.querySelector('#yearSlider');
 
 const gltfLoader = new GLTFLoader();
 
@@ -173,6 +175,72 @@ function loadingDotsCount() {
     }
 }
 
+// slider capture
+yearSlider.addEventListener('change', () => {
+
+    if (scroll) {
+
+        let sliderVal = yearSlider.value;
+
+        if (sliderVal == 0) {
+            // 1870
+            mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: Jannick Siderius - impression";
+            yearLabel.innerHTML = "Year: ca. 1870";
+
+            kuyper.visible = true;
+            ahn1.visible = false;
+            ahn2.visible = false;
+            ahn3.visible = false;
+            ahn4.visible = false;
+
+        } else if (sliderVal == 1) {
+            // ahn1/1998
+            mapInfoDiv.innerHTML = "Height data: AHN1 <b>(1997-1998)</b>, Image data: Google 2005";
+            yearLabel.innerHTML = "Year: 1997-1998";
+
+            kuyper.visible = false;
+            ahn1.visible = true;
+            ahn2.visible = false;
+            ahn3.visible = false;
+            ahn4.visible = false;
+
+        } else if (sliderVal == 2) {
+            // ahn2/2012
+            mapInfoDiv.innerHTML = "Height data: AHN2 <b>(2012)</b>, Image data: Google 2012";
+            yearLabel.innerHTML = "Year: 2012";
+
+            kuyper.visible = false;
+            ahn1.visible = false;
+            ahn2.visible = true;
+            ahn3.visible = false;
+            ahn4.visible = false;
+
+        } else if (sliderVal == 3) {
+            // ahn3/2018
+            mapInfoDiv.innerHTML = "Height data: AHN3 <b>(2018)</b>, Image data: Google 2018";
+            yearLabel.innerHTML = "Year: 2018";
+
+            kuyper.visible = false;
+            ahn1.visible = false;
+            ahn2.visible = false;
+            ahn3.visible = true;
+            ahn4.visible = false;
+
+        } else if (sliderVal == 4) {
+            // ahn4/2020
+            mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
+            yearLabel.innerHTML = "Year: 2021";
+
+            kuyper.visible = false;
+            ahn1.visible = false;
+            ahn2.visible = false;
+            ahn3.visible = false;
+            ahn4.visible = true;
+
+        }
+    }
+});
+
 // window resize event
 window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth * screenDivision, window.innerHeight);
@@ -198,12 +266,15 @@ window.addEventListener('scroll', () => {
 
     if (debugText) sectionDiv.innerHTML = windowOffset + "/" + maxScrollOffset + " | " + scrollPercentage + "%";
 
-    if (scrollPercentage < 8) {
+    if (scrollPercentage < 9) {
         // orbit around mount St Peter (ahn4)
         orbit = true;
         orbitTarget.set(250, 0, 1250);
         orbitDistance = 500;
         orbitHeight = 500;
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = false;
         ahn1.visible = false;
@@ -214,12 +285,15 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
 
-    } else if (scrollPercentage >= 8 && scrollPercentage < 20) {
+    } else if (scrollPercentage >= 9 && scrollPercentage < 20) {
         // orbit around kuypers model (kuyper)
         orbit = true;
         orbitTarget.set(0, 0, 0);
         orbitDistance = 1250;
         orbitHeight = 750;
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = true;
         ahn1.visible = false;
@@ -230,11 +304,14 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: Jannick Siderius - impression";
 
-    } else if (scrollPercentage >= 20 && scrollPercentage < 32) {
+    } else if (scrollPercentage >= 20 && scrollPercentage < 31) {
         // top-down view + overlay tunnel map (kuyper)
         orbit = false;
         camera.position.set(150, 1500, -500);
         camera.lookAt(150, 0, -500);
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = true;
         ahn1.visible = false;
@@ -245,11 +322,14 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: Jannick Siderius - impression, Map data: Ir. DC van Schaïk";
 
-    } else if (scrollPercentage >= 32 && scrollPercentage < 44) {
+    } else if (scrollPercentage >= 31 && scrollPercentage < 42) {
         // zoom to ENCI building (ahn1)
         orbit = false;
         camera.position.set(1000, 500, 500);
         camera.lookAt(450, 0, 450);
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = false;
         ahn1.visible = true;
@@ -260,12 +340,15 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: AHN1 <b>(1997-1998)</b>, Image data: Google 2005";
 
-    } else if (scrollPercentage >= 44 && scrollPercentage < 57) {
+    } else if (scrollPercentage >= 42 && scrollPercentage < 52) {
         // orbit around ENCI quarry (ahn2)
         orbit = true;
         orbitTarget.set(-250, 0, 300);
         orbitDistance = 750;
         orbitHeight = 750;
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = false;
         ahn1.visible = false;
@@ -276,11 +359,14 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: AHN2 <b>(2012)</b>, Image data: Google 2012";
 
-    } else if (scrollPercentage >= 57 && scrollPercentage < 69) {
+    } else if (scrollPercentage >= 52 && scrollPercentage < 63) {
         // top-down view of excavation (ahn3)
         orbit = false;
         camera.position.set(1000, 1000, 500);
         camera.lookAt(100, 0, 300);
+
+        scroll = false;
+        yearSlider.disabled = true;
 
         kuyper.visible = false;
         ahn1.visible = false;
@@ -291,13 +377,16 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: AHN3 <b>(2018)</b>, Image data: Google 2018";
 
-    } else if (scrollPercentage >= 69 && scrollPercentage < 81) {
+    } else if (scrollPercentage >= 63 && scrollPercentage < 74) {
         // orbit around nature along ENCI quarry (ahn4)
         orbit = true;
         orbitTarget.set(-150, 0, -150);
         orbitDistance = 500;
         orbitHeight = 500;
 
+        scroll = false;
+        yearSlider.disabled = true;
+
         kuyper.visible = false;
         ahn1.visible = false;
         ahn2.visible = false;
@@ -307,13 +396,16 @@ window.addEventListener('scroll', () => {
 
         mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
 
-    } else if (scrollPercentage >= 81) {
-        // orbit around mount St Peter (ahn4) && end
+    } else if (scrollPercentage >= 74 && scrollPercentage < 85) {
+        // scroll through time
         orbit = true;
         orbitTarget.set(250, 0, 1250);
         orbitDistance = 500;
         orbitHeight = 500;
 
+        scroll = false;
+        yearSlider.disabled = true;
+
         kuyper.visible = false;
         ahn1.visible = false;
         ahn2.visible = false;
@@ -322,6 +414,16 @@ window.addEventListener('scroll', () => {
         tunnelMesh.visible = false;
 
         mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
+    } else if (scrollPercentage >= 85) {
+        // orbit around selection && end
+        orbit = true;
+        orbitTarget.set(-100, 0, 400);
+        orbitDistance = 500;
+        orbitHeight = 500;
+
+        scroll = true;
+        yearSlider.disabled = false;
+
     }
 });
 
@@ -341,6 +443,7 @@ let orbit = true;
 let orbitTarget = new THREE.Vector3(0, 0, 0);
 let orbitDistance = 1500;
 let orbitHeight = 1000;
+let scroll = false;
 
 let debugText = false;
 
