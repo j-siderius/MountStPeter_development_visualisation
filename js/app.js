@@ -31,10 +31,10 @@ const ambientLight = new THREE.AmbientLight(0xFFFFFF, 3);
 scene.add(ambientLight);
 
 const pointLight = new THREE.PointLight(0xFCE570, 6);
-pointLight.position.set(0, 1500, 5000);
+pointLight.position.set(0, 2000, 5000);
 pointLight.castShadow = true;
 pointLight.shadow.camera.far = 10000; // default
-pointLight.shadow.bias = -0.015;
+pointLight.shadow.bias = -0.010;
 scene.add(pointLight);
 
 // orbiting controls
@@ -145,7 +145,7 @@ Promise.all([
     ahn3.visible = false;
     ahn4.visible = true;
 
-    mapInfoDiv.innerHTML = "Height data: AHN4, Image data: Google 2020";
+    mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
 });
 
 // image texture
@@ -212,7 +212,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = true;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN4, Image data: Google 2020";
+        mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
 
     } else if (scrollPercentage >= 8 && scrollPercentage < 20) {
         // orbit around kuypers model (kuyper)
@@ -228,7 +228,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: J Kuyper, Texture: artist' impression";
+        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: artist' impression";
 
     } else if (scrollPercentage >= 20 && scrollPercentage < 32) {
         // top-down view + overlay tunnel map (kuyper)
@@ -243,7 +243,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = true;
 
-        mapInfoDiv.innerHTML = "Height data: J Kuyper, Texture: artist' impression, Map data: Ir. DC van Schaïk";
+        mapInfoDiv.innerHTML = "Height data: J Kuyper <b>(ca. 1870)</b>, Texture: artist' impression, Map data: Ir. DC van Schaïk";
 
     } else if (scrollPercentage >= 32 && scrollPercentage < 44) {
         // zoom to ENCI building (ahn1)
@@ -258,7 +258,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN1, Image data: Google 2005";
+        mapInfoDiv.innerHTML = "Height data: AHN1 <b>(1997-1998)</b>, Image data: Google 2005";
 
     } else if (scrollPercentage >= 44 && scrollPercentage < 57) {
         // orbit around ENCI quarry (ahn2)
@@ -274,7 +274,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN2, Image data: Google 2012";
+        mapInfoDiv.innerHTML = "Height data: AHN2 <b>(2012)</b>, Image data: Google 2012";
 
     } else if (scrollPercentage >= 57 && scrollPercentage < 69) {
         // top-down view of excavation (ahn3)
@@ -289,7 +289,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = false;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN3, Image data: Google 2018";
+        mapInfoDiv.innerHTML = "Height data: AHN3 <b>(2018)</b>, Image data: Google 2018";
 
     } else if (scrollPercentage >= 69 && scrollPercentage < 81) {
         // orbit around nature along ENCI quarry (ahn4)
@@ -305,7 +305,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = true;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN4, Image data: Google 2020";
+        mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
 
     } else if (scrollPercentage >= 81) {
         // orbit around mount St Peter (ahn4) && end
@@ -321,7 +321,7 @@ window.addEventListener('scroll', () => {
         ahn4.visible = true;
         tunnelMesh.visible = false;
 
-        mapInfoDiv.innerHTML = "Height data: AHN4, Image data: Google 2020";
+        mapInfoDiv.innerHTML = "Height data: AHN4 <b>(2021)</b>, Image data: Google 2020";
     }
 });
 
