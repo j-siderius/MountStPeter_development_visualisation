@@ -7,7 +7,7 @@ The mount is visualised at different times in history. The 3D models are made in
 The visualisations are displayed on a website that is built using plain HTML/CSS/JS.
 The 3D models are rendered using the THREE.JS framework. Information is displayed in blocks, divided by scrolling sections.
 
-The website is hosted on [GitHub Pages]([https://j-siderius.github.io/mountStPeter/](https://j-siderius.github.io/MountStPeter_development_visualisation/)).
+The website is hosted on [GitHub Pages](https://j-siderius.github.io/MountStPeter_development_visualisation/).
 
 <p float="left">
   <img src="doc/doc_1.png" width="33%" />
